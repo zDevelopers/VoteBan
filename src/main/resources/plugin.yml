@@ -1,0 +1,39 @@
+name: VoteBanRevamped
+version: 1.0
+main: fr.zcraft.VoteBan.VoteBan
+
+description: Vote for bans if moderators are away. A rewrite of a plugin by niquecraft.
+author: Amaury Carrade
+
+
+commands:
+    votebans:
+        description: "VoteBan central command"
+    voteban:
+        description: "Usage: /<command> <player> <reason>, to launch a vote"
+    voteyes:
+        description: "Alias of /votebans yes"
+    voteno:
+        description: "Alias of /votebans no"
+
+
+# Permissions section generated using https://amaury.carrade.eu/tools/generators/bukkit/permissions.html
+permissions:
+    voteban.*:
+        default: false
+        children:
+            voteban.start: true
+            voteban.vote: true
+            voteban.exempt: true
+
+    voteban.start:
+        description: "Start a voteban."
+        default: false
+
+    voteban.vote:
+        description: "Vote against a player during a voteban."
+        default: false
+
+    voteban.exempt:
+        description: "Players with this permission cannot be vote-banned against."
+        default: op

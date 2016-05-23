@@ -1,0 +1,30 @@
+# Language. Empty: system language.
+locale:
+
+
+votes:
+    # The delay allowed to vote. After this delay, the votes will be counted and
+    # the actions taken. (Seconds.)
+    delay: 40
+
+    # The minimal time to wait between two votebans against the same player.
+    # (Seconds.)
+    cooldown: 120
+
+    # The minimal amount of voters needed to take an action.
+    minimal_votes: 3
+
+    # The percentage, between 0 and 100, of “yes” required to take action.
+    positive_percentage_required: 50
+
+
+# The commands to run when a vote ask for a ban.
+# You can use the following placeholders:
+#   {targetName}    {targetUUID}
+#   {launcherName}  {launcherUUID}
+#   {reason}             (the reason the launcher entered while asking for the ban)
+#   {votesForBan}        (number of votes asking for a ban)
+#   {votesAgainstBan}    (number of votes against)
+#   {votes}              (total amount of votes)
+ban_commands:
+  - "ban {targetName} VoteBan started by {launcherName}: {reason}"
