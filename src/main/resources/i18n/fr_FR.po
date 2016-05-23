@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-23 16:13+0200\n"
+"PO-Revision-Date: 2016-05-23 16:39+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Amaury Carrade\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:29
+msgid "A player name and a reason are required."
+msgstr "Un joueur et un motif sont requis."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:34
+msgid "You cannot vote-ban yourself"
+msgstr "Vous ne pouvez pas lancer un vote contre vous-même."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:50
+#, java-format
+msgid "{0} is currently immunized due to a previously failed vote."
+msgstr "{0} est actuellement immunisé en raison d'un précédent vote échoué."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:54
+#, java-format
+msgid "You cannot vote-ban {0}."
+msgstr "Vous ne pouvez pas lancer de vote contre {0}."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:60
+#, java-format
+msgid "A vote against {0} is already running (started by {1})."
+msgstr "Un vote contre {0} est déjà en cours (initié par {1})."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:61
+#, java-format
+msgid "The reason is: {0}"
+msgstr "Le motif est : {0}"
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:66
+msgid "Click here to vote for this ban"
+msgstr "Cliquez ici pour voter pour ce bannissement"
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansStartCommand.java:68
+#, java-format
+msgid "Vote the ban of {0}"
+msgstr "Voter le bannissement de {0}"
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:68
+msgid "There is no running vote-ban."
+msgstr "Il n'y a pas de vote-ban en cours."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:71
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:89
+msgid "To start one, use the /voteban command (or click here)."
+msgstr "Pour en démarrer un, utilisez la commande /voteban (ou cliquez ici)."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:86
+#, java-format
+msgid "There is no running vote-ban for {0}."
+msgstr "Il n'y a pas de vote-ban en cours pour {0}."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:101
+msgid ""
+"There is more than one running vote-ban, please add the name of your target "
+"to the command."
+msgstr ""
+"Il y a plusieurs votes-ban en cours : merci d'ajouter le nom de votre cible "
+"à la commande."
+
+#: src/main/java/fr/zcraft/VoteBan/commands/votebans/VoteBansVoteCommand.java:108
+msgid "You can only vote once."
+msgstr "Vous ne pouvez voter qu'une fois."
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:121
+msgid "{gold}{bold}{0} started a vote to ban {1}"
+msgstr "{gold}{bold}{0} a lancé un vote pour bannir {1}"
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:123
+msgid "{yellow}Reason: {gold}{0}"
+msgstr "{yellow}Motif : {gold}{0}"
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:126
+msgid "I agree"
+msgstr "J'approuve"
+
+#. Tooltip of the buttons in the chat. Followed by the command name: “You can also type /voteyes” as example.
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:129
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:137
+msgid "You can also type "
+msgstr "Vous pouvez également taper "
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:135
+msgid "I disagree"
+msgstr "Je désapprouve"
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:150
+msgid "{gray}(You are not allowed to vote.)"
+msgstr "{gray}(Vous n'avez pas le droit de vote.)"
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:175
+msgid "{darkgreen}✚  {green}{0} wants {1} to be banned"
+msgstr "{darkgreen}✚  {green}{0} a voté pour le bannissement de {1}."
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:180
+msgid "{darkred}✖  {red}{0} is against the ban of {1}"
+msgstr "{darkred}✖  {red}{0} a voté contre le bannissement de {1}."
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:196
+msgid "{ce}There were not enough votes to take an action."
+msgstr "{ce}Il n'y a pas eu assez de votes pour faire quoique ce soit."
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:202
+msgid "{ce}At least {0}% of the votes must be positive to ban {1}."
+msgstr "{ce}Au minimum {0}% des votes doivent être positif pour bannir {1}."
+
+#: src/main/java/fr/zcraft/VoteBan/votes/Vote.java:208
+msgid "{cs}{bold}The people have spoken. {cs}{0} will be banned."
+msgstr "{cs}{bold}Le peuple a parlé. {cs}{0} sera banni."
