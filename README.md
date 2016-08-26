@@ -2,7 +2,7 @@
 
 Vote for bans if moderators are away. [**Download link**](https://jenkins.carrade.eu/job/VoteBan/).
 
-For playes with the needed permission, `/voteban <pseudo> <reason>` launches a vote to ban the given player (as example, a visitor flooding the chat without moderator available). Other players have a configurable amount of time to vote, and an action is taken following the results.
+For players with the needed permission, `/voteban <pseudo> <reason>` launches a vote to ban the given player (as example, a visitor flooding the chat without moderator available). Other players have a configurable amount of time to vote, and an action is taken following the results.
 
 Players can be protected against bans.
 
