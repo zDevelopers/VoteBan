@@ -33,9 +33,9 @@ package fr.zcraft.VoteBan.votes;
 
 public class CannotRegisterVoteException extends RuntimeException
 {
-    private Reason reason;
+    private final Reason reason;
 
-    public CannotRegisterVoteException(Reason reason)
+    public CannotRegisterVoteException(final Reason reason)
     {
         super();
 

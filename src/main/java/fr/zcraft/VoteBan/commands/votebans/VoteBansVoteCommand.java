@@ -78,7 +78,7 @@ public abstract class VoteBansVoteCommand extends Command
 
         else if (args.length >= 1)
         {
-            Player target = getPlayerParameter(0);
+            final Player target = getPlayerParameter(0);
             vote = votes.get(target.getUniqueId());
 
             if (vote == null)
@@ -114,9 +114,9 @@ public abstract class VoteBansVoteCommand extends Command
     {
         if (args.length == 1)
         {
-            List<String> currentVotedPlayers = new ArrayList<>();
+            final List<String> currentVotedPlayers = new ArrayList<>();
 
-            for (Vote vote : VoteBan.get().getVotes().values())
+            for (final Vote vote : VoteBan.get().getVotes().values())
                 currentVotedPlayers.add(vote.getTargetPlayer().getName());
 
             return getMatchingSubset(currentVotedPlayers, args[0]);
@@ -126,7 +126,7 @@ public abstract class VoteBansVoteCommand extends Command
     }
 
     @Override
-    public boolean canExecute(CommandSender sender)
+    public boolean canExecute(final CommandSender sender)
     {
         return Permissions.VOTE.grantedTo(sender);
     }

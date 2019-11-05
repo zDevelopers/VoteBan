@@ -42,9 +42,15 @@ import fr.zcraft.zlib.tools.runners.RunTask;
 import fr.zcraft.zlib.tools.text.RawMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -59,7 +65,11 @@ public class Vote
     private final Set<UUID> votesYes = new HashSet<>();
     private final Set<UUID> votesNo  = new HashSet<>();
 
-    public Vote(Player target, Player launcher, String reason)
+    private float secondsLeft = 0.0f;
+    private BossBar bar = null;
+    private BukkitTask task = null;
+
+    public Vote(final Player target, final Player launcher, final String reason)
     {
         this.target = target.getUniqueId();
         this.launcher = launcher.getUniqueId();
@@ -116,11 +126,13 @@ public class Vote
 
         /* ** Broadcasts the vote ** */
 
+        Bukkit.broadcastMessage("");
         separator();
 
         Bukkit.broadcastMessage(I.t("{gold}{bold}{0} started a vote to ban {1}", getLauncherPlayer().getName(), targetPlayer.getName()));
         Bukkit.broadcastMessage("");
         Bukkit.broadcastMessage(I.t("{yellow}Reason: {gold}{0}", reason));
+        Bukkit.broadcastMessage("");
 
         RawText invite = new RawText("")
                 .then("[ " + I.t("I agree") + " ]")
@@ -139,11 +151,9 @@ public class Vote
 
                 .build();
 
-        for (Player player : Bukkit.getOnlinePlayers())
+        for (final Player player : Bukkit.getOnlinePlayers())
         {
-            Bukkit.broadcastMessage("");
-
-            if (Permissions.VOTE.grantedTo(player))
+            if (Permissions.VOTE.grantedTo(player) && !player.equals(targetPlayer))
                 RawMessage.send(player, invite);
 
             else
@@ -152,16 +162,18 @@ public class Vote
 
         separator();
 
+        /* ** Broadcasts the vote of the sender (clearer for players) & the sound ** */
+
+        RunTask.later(() -> broadcastVote(getLauncherPlayer(), true), 10);
+        Bukkit.getOnlinePlayers().forEach(player -> player.playSound(player.getLocation(), Sound.ITEM_TRIDENT_THUNDER, 1f, 1f));
+
 
         /* ** Schedules the end ** */
 
-        RunTask.later(new Runnable() {
-            @Override
-            public void run()
-            {
-                end();
-            }
-        }, Config.VOTES.DELAY.get() * 20);
+        secondsLeft = (float) Config.VOTES.DELAY.get();
+        bar = Bukkit.createBossBar(I.t("{red}{bold}{0} wants to ban {1} {gray}-{yellow} {2}", getLauncherPlayer().getName(), targetPlayer.getName(), reason), BarColor.RED, BarStyle.SOLID);
+
+        task = RunTask.timer(this::tick, 1L, 1L);
     }
 
     public boolean vote(Player player, boolean vote)
@@ -172,18 +184,41 @@ public class Vote
         if (vote)
         {
             votesYes.add(player.getUniqueId());
-            Bukkit.broadcastMessage(I.t("{darkgreen}\u271A  {green}{0} wants {1} to be banned", player.getName(), getTargetPlayer().getName()));
+            Bukkit.getOnlinePlayers().forEach(p -> p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1f, .1f));
         }
         else
         {
             votesNo.add(player.getUniqueId());
-            Bukkit.broadcastMessage(I.t("{darkred}\u2716  {red}{0} is against the ban of {1}", player.getName(), getTargetPlayer().getName()));
+            Bukkit.getOnlinePlayers().forEach(p -> p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1f, 2f));
         }
 
+        broadcastVote(player, vote);
         return true;
     }
 
-    public void end()
+    private void tick()
+    {
+        if (secondsLeft <= 0)
+        {
+            task.cancel();
+            task = null;
+
+            bar.removeAll();
+            bar = null;
+
+            end();
+            return;
+        }
+
+        final List<Player> barPlayers = bar.getPlayers();
+
+        Bukkit.getOnlinePlayers().stream().filter(player -> !barPlayers.contains(player)).forEach(bar::addPlayer);
+        bar.setProgress(secondsLeft / (float) Config.VOTES.DELAY.get());
+
+        secondsLeft -= .05f;
+    }
+
+    private void end()
     {
         separator();
 
@@ -232,12 +267,27 @@ public class Vote
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commandLine);
             }
+
+            Bukkit.getOnlinePlayers().forEach(player -> player.playSound(player.getLocation(), Sound.ENTITY_EVOKER_PREPARE_WOLOLO, 1f, 1.2f));
         }
         else
         {
             VoteBan.get().immunize(target);
+            Bukkit.getOnlinePlayers().forEach(player -> player.playSound(player.getLocation(), Sound.ENTITY_CAT_AMBIENT, 1f, .6f));
         }
 
         VoteBan.get().unregisterVote(this);
+    }
+
+    private void broadcastVote(final Player voter, final boolean vote)
+    {
+        if (vote)
+        {
+            Bukkit.broadcastMessage(I.t("{darkgreen}\u271A  {green}{0} wants {1} to be banned", voter.getName(), getTargetPlayer().getName()));
+        }
+        else
+        {
+            Bukkit.broadcastMessage(I.t("{darkred}\u2716  {red}{0} is against the ban of {1}", voter.getName(), getTargetPlayer().getName()));
+        }
     }
 }

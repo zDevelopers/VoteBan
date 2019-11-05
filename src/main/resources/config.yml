@@ -5,7 +5,7 @@ locale:
 votes:
     # The delay allowed to vote. After this delay, the votes will be counted and
     # the actions taken. (Seconds.)
-    delay: 40
+    delay: 60
 
     # The minimal time to wait between two votebans against the same player.
     # (Seconds.)
@@ -27,4 +27,4 @@ votes:
 #   {votesAgainstBan}    (number of votes against)
 #   {votes}              (total amount of votes)
 ban_commands:
-  - "ban {targetName} VoteBan started by {launcherName}: {reason}"
+  - "ban {targetName} VoteBan started by {launcherName} ({votesForBan}/{votes}): {reason}"

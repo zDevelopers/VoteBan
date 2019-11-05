@@ -28,21 +28,21 @@ public final class VoteBansStartCommand extends Command
         if (args.length < 2)
             throwInvalidArgument(I.t("A player name and a reason are required."));
 
-        Player target = getPlayerParameter(0);
+        final Player target = getPlayerParameter(0);
 
         if (target.equals(playerSender()))
             error(I.t("You cannot vote-ban yourself"));
 
-        String reason = "";
+        final StringBuilder reason = new StringBuilder();
         for (int i = 1; i < args.length; i++)
-            reason += " " + args[i];
+            reason.append(" ").append(args[i]);
 
         try
         {
-            Vote vote = VoteBan.get().registerVote(target, playerSender(), reason.trim());
+            final Vote vote = VoteBan.get().registerVote(target, playerSender(), reason.toString().trim());
             vote.start();
         }
-        catch (CannotRegisterVoteException e)
+        catch (final CannotRegisterVoteException e)
         {
             switch (e.getReason())
             {
@@ -55,7 +55,7 @@ public final class VoteBansStartCommand extends Command
                     break;
 
                 case ALREADY_RUNNING:
-                    Vote vote = VoteBan.get().getVote(target);
+                    final Vote vote = VoteBan.get().getVote(target);
 
                     warning(I.t("A vote against {0} is already running (started by {1}).", target.getName(), vote.getLauncherPlayer().getName()));
                     warning(I.t("The reason is: {0}", vote.getReason()));
@@ -81,9 +81,9 @@ public final class VoteBansStartCommand extends Command
     {
         if (args.length == 1)
         {
-            List<String> playersNames = new ArrayList<>();
+            final List<String> playersNames = new ArrayList<>();
 
-            for (Player player : Bukkit.getOnlinePlayers())
+            for (final Player player : Bukkit.getOnlinePlayers())
                 if (!Permissions.EXEMPTED.grantedTo(player))
                     playersNames.add(player.getName());
 
@@ -94,7 +94,7 @@ public final class VoteBansStartCommand extends Command
     }
 
     @Override
-    public boolean canExecute(CommandSender sender)
+    public boolean canExecute(final CommandSender sender)
     {
         return Permissions.START_VOTE.grantedTo(sender);
     }

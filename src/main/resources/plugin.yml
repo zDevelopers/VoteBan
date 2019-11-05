@@ -1,6 +1,7 @@
 name: VoteBanRevamped
-version: 1.0
+version: "1.0"
 main: fr.zcraft.VoteBan.VoteBan
+api-version: "1.13"
 
 description: Vote for bans if moderators are away. A rewrite of a plugin by niquecraft.
 author: Amaury Carrade
@@ -28,11 +29,11 @@ permissions:
 
     voteban.start:
         description: "Start a voteban."
-        default: false
+        default: op
 
     voteban.vote:
         description: "Vote against a player during a voteban."
-        default: false
+        default: op
 
     voteban.exempt:
         description: "Players with this permission cannot be vote-banned against."
