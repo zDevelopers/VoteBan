@@ -111,7 +111,7 @@ public class Vote
 
     public double getYesPercentage()
     {
-        return votesYes.size() / getVotersCount();
+        return (float) votesYes.size() / (float) getVotersCount();
     }
 
     private void separator()
