@@ -5,10 +5,10 @@ import fr.zcraft.VoteBan.commands.votebans.VoteBansStartCommand;
 import fr.zcraft.VoteBan.commands.votebans.VoteBansYesCommand;
 import fr.zcraft.VoteBan.votes.CannotRegisterVoteException;
 import fr.zcraft.VoteBan.votes.Vote;
-import fr.zcraft.zlib.components.commands.Commands;
-import fr.zcraft.zlib.components.i18n.I18n;
-import fr.zcraft.zlib.core.ZPlugin;
-import fr.zcraft.zlib.tools.runners.RunTask;
+import fr.zcraft.quartzlib.components.commands.Commands;
+import fr.zcraft.quartzlib.components.i18n.I18n;
+import fr.zcraft.quartzlib.core.QuartzPlugin;
+import fr.zcraft.quartzlib.tools.runners.RunTask;
 import org.bukkit.entity.Player;
 
 import java.util.Collections;
@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.UUID;
 
 
-public final class VoteBan extends ZPlugin
+public final class VoteBan extends QuartzPlugin
 {
     private static VoteBan instance;
 

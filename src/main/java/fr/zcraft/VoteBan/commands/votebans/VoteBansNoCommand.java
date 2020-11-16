@@ -1,6 +1,6 @@
 package fr.zcraft.VoteBan.commands.votebans;
 
-import fr.zcraft.zlib.components.commands.CommandInfo;
+import fr.zcraft.quartzlib.components.commands.CommandInfo;
 
 
 @CommandInfo (name = "no", usageParameters = "[player]")
