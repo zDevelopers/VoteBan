@@ -26,13 +26,13 @@
                     <minimizeJar>true</minimizeJar>
                     <artifactSet>
                         <includes>
-                            <include>fr.zcraft:zlib</include>
+                            <include>fr.zcraft:quartzlib</include>
                         </includes>
                     </artifactSet>
                     <relocations>
                         <relocation>
-                            <pattern>fr.zcraft.zlib</pattern>
-                            <shadedPattern>fr.zcraft.VoteBan.zlib</shadedPattern>
+                            <pattern>fr.zcraft.quartzlib</pattern>
+                            <shadedPattern>fr.zcraft.VoteBan.quartzlib</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -54,8 +54,8 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>zDevelopers</id>
-            <url>http://maven.carrade.eu/artifactory/snapshots</url>
+            <id>zdevelopers-quartzlib</id>
+            <url>https://maven.zcraft.fr/QuartzLib</url>
         </repository>
     </repositories>
 
@@ -67,8 +67,8 @@
         </dependency>
         <dependency>
             <groupId>fr.zcraft</groupId>
-            <artifactId>zlib</artifactId>
-            <version>0.99-SNAPSHOT</version>
+            <artifactId>quartzlib</artifactId>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 </project>
