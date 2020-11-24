@@ -1,6 +1,6 @@
-# VoteBan [![Build Status](https://jenkins.carrade.eu/job/VoteBan/badge/icon)](https://jenkins.carrade.eu/job/VoteBan/)
+# VoteBan ![Build & Test](https://github.com/zDevelopers/VoteBan/workflows/Build%20&%20Test/badge.svg)
 
-Vote for bans if moderators are away. [**Download link**](https://jenkins.carrade.eu/job/VoteBan/).
+Vote for bans if moderators are away. [**Download link**](https://github.com/zDevelopers/VoteBan/releases).
 
 For players with the needed permission, `/voteban <pseudo> <reason>` launches a vote to ban the given player (as example, a visitor flooding the chat without moderator available). Other players have a configurable amount of time to vote, and an action is taken following the results.
 
